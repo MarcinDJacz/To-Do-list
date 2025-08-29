@@ -21,7 +21,7 @@
           <a href="" class="btn btn-secondary">Update</a>
         </td>
         <td>
-          <a href="" class="btn btn-secondary">Delete</a>
+          <a href="{% url 'todo:tag_delete' pk=tag.id %}" class="btn btn-secondary">Delete</a>
         </td>
       </tr>
     {% endfor %}

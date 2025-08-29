@@ -1,11 +1,11 @@
-from django.views.generic import TemplateView, ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Task, Tag
 from .forms import TaskCreateForm, TagCreateForm
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from .mixins import ConfirmDeleteMixin
 
 class IndexView(LoginRequiredMixin,ListView):
     template_name = "todo/index.html"
@@ -46,3 +46,15 @@ class TagCreateView(LoginRequiredMixin, CreateView):
     form_class = TagCreateForm
     success_url = reverse_lazy('todo:tags_list')
     template_name = "todo/tag_create_form.html"
+
+
+class TaskDeleteView(ConfirmDeleteMixin, LoginRequiredMixin, DeleteView):
+    model = Task
+    fields = '__all__'
+    success_url = reverse_lazy('todo:index')
+
+
+class TagDeleteView(ConfirmDeleteMixin, LoginRequiredMixin, DeleteView):
+    model = Tag
+    fields = '__all__'
+    success_url = reverse_lazy('todo:tags_list')
