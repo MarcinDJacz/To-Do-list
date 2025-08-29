@@ -63,7 +63,7 @@ class TagDeleteView(ConfirmDeleteMixin, LoginRequiredMixin, DeleteView):
 
 class TaskUpdateView(LoginRequiredMixin,UpdateView):
     model = Task
-    fields = ['content', 'deadline', 'tags']
+    form_class = TaskCreateForm
     success_url = reverse_lazy('todo:index')
     template_name = "todo/task_update.html"
 
