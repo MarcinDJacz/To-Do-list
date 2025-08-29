@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %}Strona główna{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
-<h2>Witaj na stronie głównej TODO List!</h2>
+<h1>TODO list<a class="btn btn-primary" style="float: right" href="">Add task</a></h1></h1>
+{% if task_list %}
+  <table class="table">
+    {% for task in task_list %}
+      <tr>
+        <td>{{ task.content }} {{ task.done }}</td>
+        <td>{{ task.created_at }}</td>
+        <td>Tags: {{ task.tags }}
+        <a href="">Update</a>
+        <a href="">Delete</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="" style="float:right">Undo</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+{% endif %}
+
 {% endblock %}
