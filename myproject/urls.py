@@ -16,11 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from todo.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path('', include('todo.urls')),
-    # path('', IndexView.as_view(), name='index'),  # strona główna
 ]

@@ -8,6 +8,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
@@ -18,4 +19,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.content
-

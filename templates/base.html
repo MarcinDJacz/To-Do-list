@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   {% block title %}
-    <title>To Do List</title>
+  <title>To Do List</title>
   {% endblock %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,18 +11,18 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3">
-        {% block sidebar %}
-          {% include 'includes/sidebar.html' %}
-        {% endblock %}
-      </div>
-      <div class="col-sm-9">
-        {% block content %}
-        {% endblock %}
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      {% block sidebar %}
+      {% include 'includes/sidebar.html' %}
+      {% endblock %}
+    </div>
+    <div class="col-sm-9">
+      {% block content %}
+      {% endblock %}
     </div>
   </div>
+</div>
 </body>
 </html>

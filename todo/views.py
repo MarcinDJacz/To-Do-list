@@ -7,7 +7,8 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .mixins import ConfirmDeleteMixin
 
-class IndexView(LoginRequiredMixin,ListView):
+
+class IndexView(LoginRequiredMixin, ListView):
     template_name = "todo/index.html"
     model = Task
     context_object_name = "task_list"
@@ -16,6 +17,7 @@ class IndexView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         return (Task.objects.filter(user=self.request.user).
                 order_by('done', '-created_at'))
+
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -61,14 +63,14 @@ class TagDeleteView(ConfirmDeleteMixin, LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('todo:tags_list')
 
 
-class TaskUpdateView(LoginRequiredMixin,UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskCreateForm
     success_url = reverse_lazy('todo:index')
     template_name = "todo/task_update.html"
 
 
-class TagUpdateView(LoginRequiredMixin,UpdateView):
+class TagUpdateView(LoginRequiredMixin, UpdateView):
     model = Tag
     fields = '__all__'
     success_url = reverse_lazy('todo:tags_list')
