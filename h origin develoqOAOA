@@ -1,0 +1,23 @@
+[33m6a17925[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mmain[m[33m)[m minor text corrections
+[33m388209b[m Format: reformat templates and Python code for consistent indentation and spacing
+[33m37bd69f[m add: widget for date and time in TaskCreateForm
+[33m4459059[m add: update views for Task and Tag
+[33mc69b45b[m add: task_update and tag_update html files"
+[33m559e466[m add: delete views for all models using common confirm_delete template
+[33md46e696[m add common confirm_delete.html
+[33m801255b[m create TagCreateView
+[33ma735bcc[m improve index and form for TaskCreate
+[33mb84f0ed[m add: registration and accounts"
+[33mb9b307b[m add: TaskCreateView and html
+[33mece0196[m update: gitignore
+[33m2ef1797[m add: index view and index.html
+[33mcf0805c[m update: gitignore
+[33m4c07673[m update: gitignore
+[33m229caec[m add User and __str__ methods to models
+[33mba61366[m inital base.html code
+[33m26cc9d2[m set settings for template nad create initial html files
+[33mf61cc73[m add: base view for index
+[33meed99d1[m add: base view for index
+[33mfa82626[m new django project and app with initial models
+[33m95e4e8e[m add: gitignore
+[33me3e82df[m add: readme.txt
