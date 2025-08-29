@@ -25,7 +25,7 @@
           </p>
           <p>
             Tags: {{ task.tags.all|join:". " }}
-            <a href="">Update</a>
+            <a href="{% url 'todo:task_update' pk=task.id %}">Update</a>
             <a href="{% url 'todo:task_delete' pk=task.id %}">Delete</a>
           </p>
         </td>

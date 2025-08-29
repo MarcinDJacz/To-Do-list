@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DeleteView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Task, Tag
 from .forms import TaskCreateForm, TagCreateForm
@@ -14,7 +14,8 @@ class IndexView(LoginRequiredMixin,ListView):
     ordering = ['done', '-created_at']
 
     def get_queryset(self):
-        return Task.objects.filter(user=self.request.user).order_by('done', '-created_at')
+        return (Task.objects.filter(user=self.request.user).
+                order_by('done', '-created_at'))
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -58,3 +59,17 @@ class TagDeleteView(ConfirmDeleteMixin, LoginRequiredMixin, DeleteView):
     model = Tag
     fields = '__all__'
     success_url = reverse_lazy('todo:tags_list')
+
+
+class TaskUpdateView(LoginRequiredMixin,UpdateView):
+    model = Task
+    fields = ['content', 'deadline', 'tags']
+    success_url = reverse_lazy('todo:index')
+    template_name = "todo/task_update.html"
+
+
+class TagUpdateView(LoginRequiredMixin,UpdateView):
+    model = Tag
+    fields = '__all__'
+    success_url = reverse_lazy('todo:tags_list')
+    template_name = "todo/tag_update.html"
