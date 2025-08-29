@@ -21,5 +21,6 @@ from todo.views import IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('todo/', include('todo.urls')),
     path('', IndexView.as_view(), name='index'),  # strona główna
 ]
