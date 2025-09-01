@@ -1,15 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
-    datetime = models.DateTimeField(auto_now_add=True)
-    deadline_datetime = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    deadline = models.DateTimeField(blank=True, null=True)
     done = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, blank=True)
 
-
+    def __str__(self):
+        return self.content
